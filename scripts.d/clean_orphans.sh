@@ -2,10 +2,10 @@
 
 # 🧼 Remove unused shares without metadata
 echo "🧼 Pruning orphaned mount folders..."
-for folder in $HOME/*-share; do
+for folder in $HOME/termux-workflow-launcher/*-share; do
   [[ -d "$folder" ]] || continue
-  meta="$folder/.workflow.meta"
-  grep -q "$folder" "$HOME/scripts.d/mount_cache.db" || {
+  meta="$folder/termux-workflow-launcher/.workflow.meta"
+  grep -q "$folder" "$HOME/termux-workflow-launcher/scripts.d/mount_cache.db" || {
     echo "🧹 Removing orphan folder: $folder"
     rm -rf "$folder"
   }

@@ -5,7 +5,7 @@
 # └────────────────────────────────────────────┘
 
 ALIAS_FILE="$HOME/.bash_aliases"
-WORKFLOW_DIR="$HOME/workflows.d"
+WORKFLOW_DIR="$HOME/termux-workflow-launcher/workflows.d"
 
 log() { echo "[alias-injector] $1"; }
 

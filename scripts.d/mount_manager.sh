@@ -5,7 +5,7 @@
 # └─────────────────────────────────────────────┘
 
 WORKFLOW="$1"
-CACHE="$HOME/scripts.d/mount_cache.db"
+CACHE="$HOME/termux-workflow-launcher/scripts.d/mount_cache.db"
 VERSION="v1.1"
 STAMP="$(date '+%Y-%m-%d %H:%M:%S')"
 
@@ -15,7 +15,7 @@ declare -A MOUNTS=(
   [node]="node-share"
 )
 
-SHARE="$HOME/${MOUNTS[$WORKFLOW]}"
+SHARE="$HOME/termux-workflow-launcher/${MOUNTS[$WORKFLOW]}"
 MNT="/mnt/${MOUNTS[$WORKFLOW]}"
 DISTRO="alpine-$WORKFLOW"
 

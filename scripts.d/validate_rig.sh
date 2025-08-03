@@ -24,7 +24,7 @@ fi
 # Verify code-server location
 if [ ! -f "$HOME/.vscode-server/bin/code-server" ]; then
     log "VSCode Server missing — running install script..."
-    bash "$HOME/scripts.d/check_vscode.sh"
+    bash "$HOME/termux-workflow-launcher/scripts.d/check_vscode.sh"
 fi
 
 # Check named Alpine distros
@@ -32,7 +32,7 @@ DISTROS=(alpine-node alpine-dotnet)
 for distro in "${DISTROS[@]}"; do
     if ! proot-distro list | grep -q "$distro"; then
         log "Provisioning missing distro: $distro"
-        bash "$HOME/workflows.d/${distro##alpine-}.sh"
+        bash "$HOME/termux-workflow-launcher/workflows.d/${distro##alpine-}.sh"
     fi
 done
 

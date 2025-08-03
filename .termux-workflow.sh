@@ -5,33 +5,33 @@
 # └─────────────────────────────────────────────┘
 
 # ✅ Validate rig
-bash "$HOME/scripts.d/validate_rig.sh"
+bash "$HOME/termux-workflow-launcher/scripts.d/validate_rig.sh"
 
 # 🔗 Inject aliases
-bash "$HOME/scripts.d/inject_aliases.sh"
+bash "$HOME/termux-workflow-launcher/scripts.d/inject_aliases.sh"
 
 # 🛠️ Prep mount cache
-touch "$HOME/scripts.d/mount_cache.db"
+touch "$HOME/termux-workflow-launcher/scripts.d/mount_cache.db"
 
 # 🌐 Check internet
-source "$HOME/scripts.d/check_connectivity.sh"
+source "$HOME/termux-workflow-launcher/scripts.d/check_connectivity.sh"
 check_connectivity
 
 # ⚙️ Workflow selector
 if $ONLINE; then
-    source "$HOME/scripts.d/check_vscode.sh"
+    source "$HOME/termux-workflow-launcher/scripts.d/check_vscode.sh"
     check_vscode
 
-    source "$HOME/scripts.d/choose_workflow.sh"
+    source "$HOME/termux-workflow-launcher/scripts.d/choose_workflow.sh"
     choose_workflow
 else
-    CACHE="$HOME/.workflow-cache"
+    CACHE="$HOME/termux-workflow-launcher/.workflow-cache"
     [[ -f "$CACHE" ]] && workflow="$(cat "$CACHE")"
     echo "⚡ No internet. Using cached workflow: $workflow"
 fi
 
 # 🔗 Trigger workflow-specific mount manager
-bash "$HOME/.hooks/${workflow}_mount.sh"
+bash "$HOME/termux-workflow-launcher/.hooks/${workflow}_mount.sh"
 
 # 🚀 Launch distro
 DISTRO="alpine-$workflow"
