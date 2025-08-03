@@ -25,6 +25,10 @@ fi
 if [ ! -f "$HOME/.vscode-server/bin/code-server" ]; then
     log "VSCode Server missing — running install script..."
     bash "$HOME/termux-workflow-launcher/scripts.d/check_vscode.sh"
+    while [ ! -f "$HOME/.vscode-server/bin/code-server" ]; do
+        echo "⏳ Waiting for VSCode Server to install..."
+        sleep 1
+    done
 fi
 
 # Check named Alpine distros

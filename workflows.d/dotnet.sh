@@ -6,7 +6,7 @@ mkdir -p "$SHARE"
 
 if ! proot-distro list | grep -q "$DISTRO"; then
   echo "📦 Installing $DISTRO..."
-  proot-distro install alpine
+  proot-distro install alpine --override-alias "$DISTRO"
   cp -r ~/.proot-distro/installed-rootfs/alpine ~/.proot-distro/installed-rootfs/$DISTRO
 
   proot-distro login $DISTRO --shared-tmp -- bash -c "
