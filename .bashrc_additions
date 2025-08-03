@@ -1,0 +1,29 @@
+# ┌────────────────────────────────────────┐
+# │ Termux Workflow Launcher Additions     │
+# └────────────────────────────────────────┘
+
+# 🧠 Launcher toggle
+export WORKFLOW_LAUNCHER_ENABLED=true
+
+# 📁 Shared folder alias
+alias devshare='cd ~/dev-share'
+
+# 💻 Dev container shortcuts
+alias dev-node='proot-distro login alpine-node'
+alias dev-dotnet='proot-distro login alpine-dotnet'
+
+# 🧠 VSCode Server alias
+alias code-server='~/.vscode-server/bin/code-server --host 127.0.0.1'
+
+# 🚀 Source orchestrator from either known location
+if [ -f "$HOME/.termux-workflow.sh" ]; then
+    source "$HOME/.termux-workflow.sh"
+elif [ -f "$HOME/termux-workflow-launcher/.termux-workflow.sh" ]; then
+    bash "$HOME/termux-workflow-launcher/.termux-workflow.sh"
+fi
+
+# 🧪 Optional debug flag (uncomment to enable verbose logging)
+# export WORKFLOW_DEBUG=true
+
+# 🛠 Optionally cache last workflow (used by launcher)
+# export WORKFLOW_CACHE_PATH="$HOME/.workflow-cache"
