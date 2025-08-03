@@ -66,7 +66,7 @@ pkg update && pkg install curl git proot-distro bash fzf
 ```bash
 git clone https://github.com/yourusername/termux-workflow-launcher.git
 cd termux-workflow-launcher
-chmod +x *.sh scripts.d/*.sh workflows.d/*.sh ui.d/*.sh
+chmod +x *.sh scripts.d/*.sh workflows.d/*.sh ui.d/*.sh hooks.d/*.sh
 ```
 
 ### ✨ Add Your Own Workflows

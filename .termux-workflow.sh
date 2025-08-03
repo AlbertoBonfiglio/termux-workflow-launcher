@@ -4,51 +4,40 @@
 # │ 🧠 Termux Workflow Launcher — Main Script    │
 # └─────────────────────────────────────────────┘
 
-# ✅ Run rig validator (checks deps, folders, VSCode, distros)
+# ✅ Validate rig
 bash "$HOME/scripts.d/validate_rig.sh"
 
-# 🔗 Inject aliases from workflow scripts
+# 🔗 Inject aliases
 bash "$HOME/scripts.d/inject_aliases.sh"
 
-# 🌐 Check internet connectivity
+# 🛠️ Prep mount cache
+touch "$HOME/scripts.d/mount_cache.db"
+
+# 🌐 Check internet
 source "$HOME/scripts.d/check_connectivity.sh"
 check_connectivity
 
-# ⚙️ Workflow selection logic
+# ⚙️ Workflow selector
 if $ONLINE; then
-    # 💡 VSCode Server version check (only in online mode)
     source "$HOME/scripts.d/check_vscode.sh"
     check_vscode
 
-    # 🎛️ Launch interactive fzf selector
     source "$HOME/scripts.d/choose_workflow.sh"
     choose_workflow
 else
-    # ⚠️ Offline fallback mode using cached workflow
     CACHE="$HOME/.workflow-cache"
     [[ -f "$CACHE" ]] && workflow="$(cat "$CACHE")"
-
     echo "⚡ No internet. Using cached workflow: $workflow"
+fi
 
-    case "$workflow" in
-        node)
-            if proot-distro list | grep -q "alpine-node"; then
-                echo "🚀 Launching alpine-node"
-                proot-distro login alpine-node
-            else
-                echo "❌ alpine-node not found. Please connect online to provision it."
-            fi
-            ;;
-        dotnet)
-            if proot-distro list | grep -q "alpine-dotnet"; then
-                echo "🚀 Launching alpine-dotnet"
-                proot-distro login alpine-dotnet
-            else
-                echo "❌ alpine-dotnet not found. Please connect online to provision it."
-            fi
-            ;;
-        *)
-            echo "❌ No valid cached workflow found. Please connect to the internet and restart Termux."
-            ;;
-    esac
+# 🔗 Trigger workflow-specific mount manager
+bash "$HOME/.hooks/${workflow}_mount.sh"
+
+# 🚀 Launch distro
+DISTRO="alpine-$workflow"
+if proot-distro list | grep -q "$DISTRO"; then
+    echo "🚀 Logging into $DISTRO"
+    proot-distro login "$DISTRO"
+else
+    echo "❌ Distro not found: $DISTRO"
 fi
