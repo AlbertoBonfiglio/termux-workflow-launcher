@@ -22,14 +22,17 @@ if [ ! -d "$HOME/dev-share" ]; then
 fi
 
 # Verify code-server location
-if [ ! -f "$HOME/.vscode-server/bin/code-server" ]; then
+VS_HOME="/data/data/com.termux/files/usr/bin/code-server"
+if [ ! -f "$VS_HOME" ]; then
     log "VSCode Server missing — running install script..."
     bash "$HOME/termux-workflow-launcher/scripts.d/check_vscode.sh"
-    while [ ! -f "$HOME/.vscode-server/bin/code-server" ]; do
+    while [ ! -f "$VS_HOME" ]; do
         echo "⏳ Waiting for VSCode Server to install..."
         sleep 1
     done
 fi
+exit 1
+
 
 # Check named Alpine distros
 DISTROS=(alpine-node alpine-dotnet)
