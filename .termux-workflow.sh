@@ -10,13 +10,16 @@ exit 0
 
 # 🔗 Inject aliases
 bash "$HOME/termux-workflow-launcher/scripts.d/inject_aliases.sh"
+exit 0
 
 # 🛠️ Prep mount cache
 touch "$HOME/termux-workflow-launcher/scripts.d/mount_cache.db"
+exit 0
 
 # 🌐 Check internet
 source "$HOME/termux-workflow-launcher/scripts.d/check_connectivity.sh"
 check_connectivity
+exit 0
 
 # ⚙️ Workflow selector
 if $ONLINE; then
