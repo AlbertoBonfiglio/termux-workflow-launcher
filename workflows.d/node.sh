@@ -17,10 +17,11 @@ if ! proot-distro list --verbose 2>/dev/null | grep -q "$DISTRO"; then
     echo \"export NVM_DIR=\\\"\$HOME/.nvm\\\"\" >> ~/.bashrc
     echo \"[ -s \\\"\$NVM_DIR/nvm.sh\\\" ] && . \\\"\$NVM_DIR/nvm.sh\\\"\" >> ~/.bashrc
     echo \"[ -s \\\"\$NVM_DIR/bash_completion\\\" ] && . \\\"\$NVM_DIR/bash_completion\\\"\" >> ~/.bashrc
+    echo \"export PATH=\\\"\$NVM_DIR:\\\$PATH\\\"\" >> ~/.bashrc
+    
     echo \"nvm use default > /dev/null 2>&1 || true\" >> ~/.bashrc
-    echo \"if [ -d \\\"\$NVM_DIR/versions/node\\\" ]; then\" >> ~/.bashrc
+
     echo \"  latest_node=\\\"\$(ls -1 \\\"\$NVM_DIR/versions/node\\\" | sort -V | tail -n1)\\\"\" >> ~/.bashrc
-    echo \"  export PATH=\\\"\$NVM_DIR/versions/node/\\\$latest_node/bin:\\\$PATH\\\"\" >> ~/.bashrc
     echo \"fi\" >> ~/.bashrc
 
   # Optional debug print
