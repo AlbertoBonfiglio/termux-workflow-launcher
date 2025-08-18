@@ -9,16 +9,20 @@ if ! proot-distro list --verbose 2>/dev/null | grep -q "$DISTRO"; then
   proot-distro install --override-alias $DISTRO alpine
   ## cp -r ~/.proot-distro/installed-rootfs/alpine ~/.proot-distro/installed-rootfs/$DISTRO
 
-  proot-distro login $DISTRO --shared-tmp -- bash -c '
-  cat <<EOF >> ~/.bashrc
-  export NVM_DIR="\$HOME/.nvm"
-  [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
-  [ -s "\$NVM_DIR/bash_completion" ] && . "\$NVM_DIR/bash_completion"
-  export PATH="\$NVM_DIR:\$PATH"
-  nvm use default > /dev/null 2>&1 || true
-  latest_node="\$(ls -1 "\$NVM_DIR/versions/node" | sort -V | tail -n1)"
-  EOF
-  '
+proot-distro login "$DISTRO" --shared-tmp -- bash -c '
+apk update && apk upgrade && apk add curl bash
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+
+cat <<EOF >> ~/.bashrc
+export NVM_DIR="\$HOME/.nvm"
+[ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
+[ -s "\$NVM_DIR/bash_completion" ] && . "\$NVM_DIR/bash_completion"
+export PATH="\$NVM_DIR:\$PATH"
+nvm use default > /dev/null 2>&1 || true
+latest_node="\$(ls -1 "\$NVM_DIR/versions/node" | sort -V | tail -n1)"
+EOF
+'
   
   #proot-distro login $DISTRO --shared-tmp -- bash -c "
   #  apk update && apk upgrade && apk add curl bash
