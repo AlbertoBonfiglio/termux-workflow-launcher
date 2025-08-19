@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DISTRO="alpine-node"
+DISTRO="debian-node"
 SHARE="$HOME/dev-share"
 mkdir -p "$SHARE"
 
@@ -10,10 +10,8 @@ if ! proot-distro list --verbose 2>/dev/null | grep -q "$DISTRO"; then
   ## cp -r ~/.proot-distro/installed-rootfs/alpine ~/.proot-distro/installed-rootfs/$DISTRO
 
 proot-distro login "$DISTRO" --shared-tmp -- bash -c '
-apk update && apk upgrade && apk add curl bash
-
+apt update && apt install curl git build-essential bash-completion
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-
 cat <<EOF >> ~/.bashrc
 export NVM_DIR="\$HOME/.nvm"
 [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
