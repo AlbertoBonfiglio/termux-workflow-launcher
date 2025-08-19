@@ -38,7 +38,7 @@ fi
 bash "$HOME/termux-workflow-launcher/.hooks/${workflow}_mount.sh"
 
 # 🚀 Launch distro
-DISTRO="alpine-$workflow"
+DISTRO="debian-$workflow"
 if proot-distro list | grep -q "$DISTRO"; then
     echo "🚀 Logging into $DISTRO"
     proot-distro login "$DISTRO"
