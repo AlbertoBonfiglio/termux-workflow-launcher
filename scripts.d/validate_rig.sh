@@ -35,8 +35,8 @@ if [ ! -f "$VS_HOME" ]; then
 fi
 echo "✅ VS Code Server validated."
 
-# Check named Alpine distros
-DISTROS=(alpine-node alpine-dotnet alpine-rust)
+# Check named debian distros
+DISTROS=(debian-node debian-dotnet debian-rust)
 for distro in "${DISTROS[@]}"; do
     echo "Validating distro: ed. $distro"
     #### if ! proot-distro list --verbose | grep -q "$distro"; then
