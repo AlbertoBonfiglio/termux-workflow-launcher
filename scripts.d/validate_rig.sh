@@ -46,7 +46,7 @@ for distro in "${DISTROS[@]}"; do
         case "$answer" in
             [Yy])
                  log "⏳ Provisioning missing distro: $distro"
-                 bash "$HOME/termux-workflow-launcher/workflows.d/${distro##alpine-}.sh"
+                 bash "$HOME/termux-workflow-launcher/workflows.d/${distro##debian-}.sh"
                  ;;
         *) ;;
         esac
