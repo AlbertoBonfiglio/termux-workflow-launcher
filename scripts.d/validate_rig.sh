@@ -57,4 +57,4 @@ done
 echo "✅ Distros validated."
 
 # Final ping
-log "✅ Rig validated. Ready to launch!"
+echo "✅ Rig validated. Ready to launch!"
