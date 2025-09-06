@@ -17,8 +17,9 @@ declare -A MOUNTS=(
 
 SHARE="$HOME/termux-workflow-launcher/${MOUNTS[$WORKFLOW]}"
 MNT="/mnt/${MOUNTS[$WORKFLOW]}"
-DISTRO="alpine-$WORKFLOW"
+DISTRO="debian-$WORKFLOW"
 
+echo "🛠️ Attemptiong to mount workflow: [$WORKFLOW]"
 # 🧠 Skip if already mounted
 grep -q "^$WORKFLOW|" "$CACHE" && {
   echo "🧠 [$WORKFLOW] already mounted. Skipping."
