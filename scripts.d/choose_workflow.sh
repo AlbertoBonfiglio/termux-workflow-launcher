@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo "🛠️  workflow initiated"
 
 choose_workflow() {
   source "$HOME/termux-workflow-launcher/ui.d/selector.sh"
