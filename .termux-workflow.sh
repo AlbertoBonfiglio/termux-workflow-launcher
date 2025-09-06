@@ -32,9 +32,11 @@ else
 fi
 
 # 🔗 Trigger workflow-specific mount manager
+echo "🔗 Trigger workflow-specific mount manager"
 bash "$HOME/termux-workflow-launcher/.hooks/${workflow}_mount.sh"
 
 # 🚀 Launch distro
+echo "🚀 Launching distro: debian-$workflow" 
 DISTRO="debian-$workflow"
 if proot-distro list | grep -q "$DISTRO"; then
     echo "🚀 Logging into $DISTRO"
