@@ -21,11 +21,8 @@ check_connectivity
 if $ONLINE; then
     source "$HOME/termux-workflow-launcher/scripts.d/check_vscode.sh"
     if check_vscode; then
-        echo "🛠️ Selecting workflow"
         source "$HOME/termux-workflow-launcher/scripts.d/choose_workflow.sh"
         choose_workflow
-    else
-        echo "⚠️ VSCode check failed. Skipping workflow selection."
     fi
 else
     CACHE="$HOME/termux-workflow-launcher/.workflow-cache"
