@@ -7,7 +7,7 @@
 ALIAS_FILE="$HOME/.bash_aliases"
 WORKFLOW_DIR="$HOME/termux-workflow-launcher/workflows.d"
 
-log() { echo "[alias-injector] $1"; }
+#log() { echo "[alias-injector] $1"; }
 
 # Ensure alias file exists
 touch "$ALIAS_FILE"
@@ -26,7 +26,8 @@ done
 # End alias block
 echo "# workflow-alias-end" >> "$ALIAS_FILE"
 
-log "✅ Aliases injected from $WORKFLOW_DIR into $ALIAS_FILE"
+#log "✅ Aliases injected from $WORKFLOW_DIR into $ALIAS_FILE"
+echo "✅ Aliases injected"
 
 # Optional: source aliases immediately
 source "$ALIAS_FILE"
