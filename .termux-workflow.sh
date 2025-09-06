@@ -23,6 +23,7 @@ if $ONLINE; then
     if check_vscode; then
         source "$HOME/termux-workflow-launcher/scripts.d/choose_workflow.sh"
         choose_workflow
+        echo "🛠️ Workflow selected: $workflow"
     fi
 else
     CACHE="$HOME/termux-workflow-launcher/.workflow-cache"
