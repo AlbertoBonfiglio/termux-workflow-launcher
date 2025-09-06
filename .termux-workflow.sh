@@ -11,13 +11,11 @@ bash "$HOME/termux-workflow-launcher/scripts.d/validate_rig.sh"
 bash "$HOME/termux-workflow-launcher/scripts.d/inject_aliases.sh"
 
 # 🛠️ Prep mount cache
-touch "$HOME/termux-workflow-launcher/scripts.d/mount_manager.sh"
-exit 0
+touch "$HOME/termux-workflow-launcher/scripts.d/mount_cache.db"
 
 # 🌐 Check internet
 source "$HOME/termux-workflow-launcher/scripts.d/check_connectivity.sh"
 check_connectivity
-exit 0
 
 # ⚙️ Workflow selector
 if $ONLINE; then
