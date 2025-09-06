@@ -10,7 +10,7 @@ if ! proot-distro list --verbose 2>/dev/null | grep -q "$DISTRO"; then
   ## cp -r ~/.proot-distro/installed-rootfs/alpine ~/.proot-distro/installed-rootfs/$DISTRO
 
 proot-distro login "$DISTRO" --shared-tmp -- bash -c '
-apt update && apt install curl git build-essential bash-completion
+apt update && apt install curl git build-essential bash-completion -y
 mkdir HOME/.nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 cat <<EOF >> ~/.bashrc
