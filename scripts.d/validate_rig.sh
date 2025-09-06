@@ -40,7 +40,7 @@ DISTROS=(debian-node debian-dotnet debian-rust)
 for distro in "${DISTROS[@]}"; do
     echo "Validating distro: ed. $distro"
     #### if ! proot-distro list --verbose | grep -q "$distro"; then
-    if ! proot-distro list --verbose 2>/dev/null | grep -q "$distro"; then
+    if ! proot-distro list 2>&1 | grep -q "$distro"; then
         echo -n "Do you want to provision $distro? [y/n]"
         read answer
         case "$answer" in
