@@ -9,7 +9,6 @@ bash "$HOME/termux-workflow-launcher/scripts.d/validate_rig.sh"
 
 # 🔗 Inject aliases
 bash "$HOME/termux-workflow-launcher/scripts.d/inject_aliases.sh"
-exit 0
 
 # 🛠️ Prep mount cache
 touch "$HOME/termux-workflow-launcher/scripts.d/mount_cache.db"
