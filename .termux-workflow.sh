@@ -6,7 +6,6 @@
 
 # ✅ Validate rig
 bash "$HOME/termux-workflow-launcher/scripts.d/validate_rig.sh"
-exit 0
 
 # 🔗 Inject aliases
 bash "$HOME/termux-workflow-launcher/scripts.d/inject_aliases.sh"
