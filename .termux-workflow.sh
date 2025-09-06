@@ -11,7 +11,7 @@ bash "$HOME/termux-workflow-launcher/scripts.d/validate_rig.sh"
 bash "$HOME/termux-workflow-launcher/scripts.d/inject_aliases.sh"
 
 # 🛠️ Prep mount cache
-touch "$HOME/termux-workflow-launcher/scripts.d/mount_cache.db"
+touch "$HOME/termux-workflow-launcher/scripts.d/mount_manager.sh"
 exit 0
 
 # 🌐 Check internet
