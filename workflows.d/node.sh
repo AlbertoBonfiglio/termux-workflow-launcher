@@ -4,7 +4,9 @@ DISTRO="debian-node"
 SHARE="$HOME/dev-share"
 mkdir -p "$SHARE"
 
-if ! proot-distro list --verbose 2>/dev/null | grep -q "$DISTRO"; then
+if ! proot-distro list | awk '{print $1}' | grep -qx "$DISTRO"; then
+  echo "❌ [$DISTRO] not found."
+#if ! proot-distro list --verbose 2>/dev/null | grep -q "$DISTRO"; then
   echo "📦 Installing $DISTRO..."
   proot-distro install --override-alias $DISTRO debian
   ## cp -r ~/.proot-distro/installed-rootfs/alpine ~/.proot-distro/installed-rootfs/$DISTRO
