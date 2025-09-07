@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
 DISTRO="debian-node"
 SHARE="$HOME/dev-share"
