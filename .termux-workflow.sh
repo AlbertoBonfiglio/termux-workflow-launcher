@@ -33,7 +33,7 @@ fi
 
 # 🔗 Trigger workflow-specific mount manager
 echo "🔗 Trigger workflow-specific mount manager"
-bash "$HOME/termux-workflow-launcher/.hooks/${workflow}_mount.sh"
+bash "$HOME/termux-workflow-launcher/hooks.d/${workflow}_mount.sh"
 
 # 🚀 Launch distro
 echo "🚀 Launching distro: debian-$workflow" 
