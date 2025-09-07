@@ -4,7 +4,7 @@ DISTRO="debian-node"
 SHARE="$HOME/dev-share"
 mkdir -p "$SHARE"
 
-if ! proot-distro list | awk '{print $1}' | grep -qx "$DISTRO"; then
+if ! proot-distro list 2>&1 | grep -q "$DISTRO"; then
   echo "❌ [$DISTRO] not found."
 #if ! proot-distro list --verbose 2>/dev/null | grep -q "$DISTRO"; then
   echo "📦 Installing $DISTRO..."
